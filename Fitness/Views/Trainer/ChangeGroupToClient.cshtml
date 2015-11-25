@@ -1,0 +1,26 @@
+﻿@model Fitness.Models.UserProfile
+
+@{
+    ViewBag.Title = "ChangeGroupToClient";
+}
+
+<h2>ChangeGroupToClient</h2>
+@using (Html.BeginForm())
+{    
+    <input type="hidden" name="idClient" value="@Model.UserId" />
+
+    <select name="idGroup">
+        @foreach (Fitness.Models.group group in ViewBag.groups)
+        {
+            <option value="@group.idGroup">@group.nameGroup</option>
+        }
+    </select>
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>        
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

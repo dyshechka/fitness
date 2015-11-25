@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище FitnessModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище FitnessModelContainer">
+          <EntitySet Name="group" EntityType="Хранилище FitnessModel.group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="monitoringvisit" EntityType="Хранилище FitnessModel.monitoringvisit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="subscription" EntityType="Хранилище FitnessModel.subscription" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="trainingprogram" EntityType="Хранилище FitnessModel.trainingprogram" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="Хранилище FitnessModel.UserProfile" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_monitoringvisit_UserProfile" Association="Хранилище FitnessModel.FK_monitoringvisit_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="monitoringvisit" EntitySet="monitoringvisit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscription_trainingprogram" Association="Хранилище FitnessModel.FK_subscription_trainingprogram">
+            <End Role="trainingprogram" EntitySet="trainingprogram" />
+            <End Role="subscription" EntitySet="subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_trainingprogram_group" Association="Хранилище FitnessModel.FK_trainingprogram_group">
+            <End Role="trainingprogram" EntitySet="trainingprogram" />
+            <End Role="group" EntitySet="group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_group" Association="Хранилище FitnessModel.FK_UserProfile_group">
+            <End Role="group" EntitySet="group" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_subscription" Association="Хранилище FitnessModel.FK_UserProfile_subscription">
+            <End Role="subscription" EntitySet="subscription" />
+            <End Role="UserProfile" EntitySet="UserProfile" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idGroup" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="nameGroup" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="idTraining" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="monitoringvisit">
+          <Key>
+            <PropertyRef Name="idVisit" />
+          </Key>
+          <Property Name="idVisit" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dateOfVisit" Type="date" Nullable="false" />
+          <Property Name="idUser" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subscription">
+          <Key>
+            <PropertyRef Name="idSubscription" />
+          </Key>
+          <Property Name="idSubscription" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="duration" Type="int" Nullable="false" />
+          <Property Name="dateOfPurchase" Type="date" Nullable="false" />
+          <Property Name="idTraining" Type="int" Nullable="false" />
+          <Property Name="status" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="trainingprogram">
+          <Key>
+            <PropertyRef Name="idTraining" />
+          </Key>
+          <Property Name="idTraining" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="typeTraining" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="kindTraining" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="56" />
+          <Property Name="fullName" Type="nvarchar" Nullable="false" MaxLength="75" />
+          <Property Name="dateOfBirth" Type="date" Nullable="false" />
+          <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="75" />
+          <Property Name="telephone" Type="int" Nullable="false" />
+          <Property Name="frozen" Type="bit" Nullable="false" />
+          <Property Name="idGroup" Type="int" />
+          <Property Name="idSubscription" Type="int" />
+        </EntityType>
+        <Association Name="FK_monitoringvisit_UserProfile">
+          <End Role="UserProfile" Type="Хранилище FitnessModel.UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="monitoringvisit" Type="Хранилище FitnessModel.monitoringvisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="monitoringvisit">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscription_trainingprogram">
+          <End Role="trainingprogram" Type="Хранилище FitnessModel.trainingprogram" Multiplicity="1" />
+          <End Role="subscription" Type="Хранилище FitnessModel.subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainingprogram">
+              <PropertyRef Name="idTraining" />
+            </Principal>
+            <Dependent Role="subscription">
+              <PropertyRef Name="idTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_trainingprogram_group">
+          <End Role="trainingprogram" Type="Хранилище FitnessModel.trainingprogram" Multiplicity="1" />
+          <End Role="group" Type="Хранилище FitnessModel.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainingprogram">
+              <PropertyRef Name="idTraining" />
+            </Principal>
+            <Dependent Role="group">
+              <PropertyRef Name="idTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_group">
+          <End Role="group" Type="Хранилище FitnessModel.group" Multiplicity="0..1" />
+          <End Role="UserProfile" Type="Хранилище FitnessModel.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_subscription">
+          <End Role="subscription" Type="Хранилище FitnessModel.subscription" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserProfile" Type="Хранилище FitnessModel.UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subscription">
+              <PropertyRef Name="idSubscription" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="idSubscription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FitnessModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FitnessEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="groups" EntityType="FitnessModel.group" />
+          <EntitySet Name="monitoringvisits" EntityType="FitnessModel.monitoringvisit" />
+          <EntitySet Name="subscriptions" EntityType="FitnessModel.subscription" />
+          <EntitySet Name="trainingprograms" EntityType="FitnessModel.trainingprogram" />
+          <AssociationSet Name="FK_trainingprogram_group" Association="FitnessModel.FK_trainingprogram_group">
+            <End Role="trainingprogram" EntitySet="trainingprograms" />
+            <End Role="group" EntitySet="groups" />
+          </AssociationSet>
+          <EntitySet Name="UserProfiles" EntityType="FitnessModel.UserProfile" />
+          <AssociationSet Name="FK_UserProfile_group" Association="FitnessModel.FK_UserProfile_group">
+            <End Role="group" EntitySet="groups" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserProfile_subscription" Association="FitnessModel.FK_UserProfile_subscription">
+            <End Role="subscription" EntitySet="subscriptions" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_monitoringvisit_UserProfile" Association="FitnessModel.FK_monitoringvisit_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="monitoringvisit" EntitySet="monitoringvisits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_subscription_trainingprogram" Association="FitnessModel.FK_subscription_trainingprogram">
+            <End Role="trainingprogram" EntitySet="trainingprograms" />
+            <End Role="subscription" EntitySet="subscriptions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="group">
+          <Key>
+            <PropertyRef Name="idGroup" />
+          </Key>
+          <Property Name="idGroup" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="nameGroup" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="idTraining" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="trainingprogram" Relationship="FitnessModel.FK_trainingprogram_group" FromRole="group" ToRole="trainingprogram" />
+          <NavigationProperty Name="UserProfiles" Relationship="FitnessModel.FK_UserProfile_group" FromRole="group" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="monitoringvisit">
+          <Key>
+            <PropertyRef Name="idVisit" />
+          </Key>
+          <Property Name="idVisit" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="dateOfVisit" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idUser" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserProfile" Relationship="FitnessModel.FK_monitoringvisit_UserProfile" FromRole="monitoringvisit" ToRole="UserProfile" />
+        </EntityType>
+        <EntityType Name="subscription">
+          <Key>
+            <PropertyRef Name="idSubscription" />
+          </Key>
+          <Property Name="idSubscription" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="dateOfPurchase" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idTraining" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="FitnessModel.FK_UserProfile_subscription" FromRole="subscription" ToRole="UserProfile" />
+          <NavigationProperty Name="trainingprogram" Relationship="FitnessModel.FK_subscription_trainingprogram" FromRole="subscription" ToRole="trainingprogram" />
+        </EntityType>
+        <EntityType Name="trainingprogram">
+          <Key>
+            <PropertyRef Name="idTraining" />
+          </Key>
+          <Property Name="idTraining" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="typeTraining" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="kindTraining" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="groups" Relationship="FitnessModel.FK_trainingprogram_group" FromRole="trainingprogram" ToRole="group" />
+          <NavigationProperty Name="subscriptions" Relationship="FitnessModel.FK_subscription_trainingprogram" FromRole="trainingprogram" ToRole="subscription" />
+        </EntityType>
+        <Association Name="FK_trainingprogram_group">
+          <End Role="trainingprogram" Type="FitnessModel.trainingprogram" Multiplicity="1" />
+          <End Role="group" Type="FitnessModel.group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainingprogram">
+              <PropertyRef Name="idTraining" />
+            </Principal>
+            <Dependent Role="group">
+              <PropertyRef Name="idTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fullName" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="dateOfBirth" Nullable="false" Precision="0" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="telephone" Nullable="false" />
+          <Property Type="Boolean" Name="frozen" Nullable="false" />
+          <Property Type="Int32" Name="idGroup" />
+          <Property Type="Int32" Name="idSubscription" />
+          <NavigationProperty Name="group" Relationship="FitnessModel.FK_UserProfile_group" FromRole="UserProfile" ToRole="group" />
+          <NavigationProperty Name="subscription" Relationship="FitnessModel.FK_UserProfile_subscription" FromRole="UserProfile" ToRole="subscription" />
+          <NavigationProperty Name="monitoringvisits" Relationship="FitnessModel.FK_monitoringvisit_UserProfile" FromRole="UserProfile" ToRole="monitoringvisit" />
+        </EntityType>
+        <Association Name="FK_UserProfile_group">
+          <End Type="FitnessModel.group" Role="group" Multiplicity="0..1" />
+          <End Type="FitnessModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="group">
+              <PropertyRef Name="idGroup" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="idGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserProfile_subscription">
+          <End Type="FitnessModel.subscription" Role="subscription" Multiplicity="0..1" />
+          <End Type="FitnessModel.UserProfile" Role="UserProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="subscription">
+              <PropertyRef Name="idSubscription" />
+            </Principal>
+            <Dependent Role="UserProfile">
+              <PropertyRef Name="idSubscription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_monitoringvisit_UserProfile">
+          <End Type="FitnessModel.UserProfile" Role="UserProfile" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FitnessModel.monitoringvisit" Role="monitoringvisit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="monitoringvisit">
+              <PropertyRef Name="idUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_subscription_trainingprogram">
+          <End Type="FitnessModel.trainingprogram" Role="trainingprogram" Multiplicity="1" />
+          <End Type="FitnessModel.subscription" Role="subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="trainingprogram">
+              <PropertyRef Name="idTraining" />
+            </Principal>
+            <Dependent Role="subscription">
+              <PropertyRef Name="idTraining" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище FitnessModelContainer" CdmEntityContainer="FitnessEntities">
+          <EntitySetMapping Name="groups">
+            <EntityTypeMapping TypeName="FitnessModel.group">
+              <MappingFragment StoreEntitySet="group">
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="nameGroup" ColumnName="nameGroup" />
+                <ScalarProperty Name="idTraining" ColumnName="idTraining" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="monitoringvisits">
+            <EntityTypeMapping TypeName="FitnessModel.monitoringvisit">
+              <MappingFragment StoreEntitySet="monitoringvisit">
+                <ScalarProperty Name="idVisit" ColumnName="idVisit" />
+                <ScalarProperty Name="dateOfVisit" ColumnName="dateOfVisit" />
+                <ScalarProperty Name="idUser" ColumnName="idUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subscriptions">
+            <EntityTypeMapping TypeName="FitnessModel.subscription">
+              <MappingFragment StoreEntitySet="subscription">
+                <ScalarProperty Name="idSubscription" ColumnName="idSubscription" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="dateOfPurchase" ColumnName="dateOfPurchase" />
+                <ScalarProperty Name="idTraining" ColumnName="idTraining" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trainingprograms">
+            <EntityTypeMapping TypeName="FitnessModel.trainingprogram">
+              <MappingFragment StoreEntitySet="trainingprogram">
+                <ScalarProperty Name="idTraining" ColumnName="idTraining" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="typeTraining" ColumnName="typeTraining" />
+                <ScalarProperty Name="kindTraining" ColumnName="kindTraining" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="FitnessModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="idSubscription" ColumnName="idSubscription" />
+                <ScalarProperty Name="idGroup" ColumnName="idGroup" />
+                <ScalarProperty Name="frozen" ColumnName="frozen" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="fullName" ColumnName="fullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

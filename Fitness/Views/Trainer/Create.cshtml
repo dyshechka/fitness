@@ -1,0 +1,55 @@
+﻿@model Fitness.Models.group
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Create Group</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>group</legend>
+   
+            <div class="editor-label">
+                @Html.LabelFor(model => model.nameGroup)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.nameGroup)
+                @Html.ValidationMessageFor(model => model.nameGroup)
+            </div>
+
+            <div class="editor-label">
+                <p>Select type and kind training</p>
+            </div>
+            <div class="editor-field">
+                <select name="idTraining" id="idTraining">
+                    @foreach (int key in ViewBag.kinds.Keys)
+                    {
+                        <option value="@key">@ViewBag.kinds[key]</option>
+                    }
+                </select>
+            </div>
+    
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model Fitness.Models.UserProfile
+
+@{
+    ViewBag.Title = "Редактирование";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Edit</title>
+</head>
+<body>
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>user</legend>
+
+             @Html.HiddenFor(model => model.UserId)
+               
+            <div class="editor-label">
+                <p>Select Role For User</p>
+            </div>
+            <div class="editor-field">
+                <select name="role">
+                    @foreach (String role in ViewBag.roles)
+                    {
+                        <option>@role</option>
+                    }
+                </select>
+            </div>  
+             
+            <p>
+                <input type="submit" value="Save" class="btn btn-success"/>
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

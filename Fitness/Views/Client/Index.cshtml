@@ -1,0 +1,54 @@
+﻿@model Fitness.Models.subscription
+
+@{
+    ViewBag.Title = "Пользователи";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index Client</title>
+</head>
+<body>
+    <div>
+        Hello dear client!
+    </div>
+    @if (Model == null)
+    {
+        <div>
+            @Html.ActionLink("Create New Subscription", "Create", new { id = ViewBag.user.UserId })
+        </div>
+    }
+
+    @if (Model != null)
+    {
+        <div>
+            @Html.ActionLink("Delete Subscription", "Delete", new { id = Model.idSubscription })
+        </div>
+        
+        if (Model.status.Equals("Подтвержден"))
+        {
+        <div>
+            @Html.ActionLink("Pay Subscription", "PaySubscription", new { id = Model.idSubscription })
+        </div>
+        }
+    
+        <div>
+            @Html.ActionLink("View status of the subscription", "ViewStatusSubscription", new { id = Model.idSubscription })
+        </div>
+    }
+    else
+    {
+        <div>
+            <p>У Вас нет абонемента</p>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Change data about itself", "Edit")
+    </div>
+
+
+</body>
+</html>

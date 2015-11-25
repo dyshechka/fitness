@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Fitness.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Главная страница (админ)";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a href="@Url.Action("Create", "Admin")" title="Создать нового пользователя"><i class="fa fa-user-plus"></i> Create New User</a>
+
+    </p>
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telephone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.group.nameGroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.frozen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idSubscription)
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateOfBirth)
+                </td>
+                <td>
+                    <a href="mailto:@Html.DisplayFor(modelItem => item.email)">@Html.DisplayFor(modelItem => item.email)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telephone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.group.nameGroup)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.frozen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idSubscription)
+                </td>
+                <td class="actions">
+                    
+                    <a href="@Url.Action("Edit", "Admin", new { id = item.UserId })" title="Редактировать пользователя" class="txt-blue"><i class="fa fa-pencil"></i></a>
+                    <a href="@Url.Action("Delete", "Admin", new { id = item.UserId })" title="Удалить пользователя" class="txt-red"><i class="fa fa-trash-o"></i></a>
+@*                    <a href="@Url.Action("Index", "Trainer", new { id = item.UserId }, null)" title="" class="txt-blue"><i class="fa fa fa-male"></i></a>
+                    <a href="@Url.Action("Index", "Client", new { id = item.UserId }, null)" title="" class="txt-green"><i class="fa fa-users"></i></a>*@
+
+
+@*                    @Html.ActionLink("Edit Role", "Edit", new { id = item.idUser })  
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idUser })  
+
+                    @Html.ActionLink("Main Pages Of Trainer", "Index", "Trainer", new { id = item.idUser }, null)
+
+                    @Html.ActionLink("Main Pages Of Client", "Index", "Client", new { id = item.idUser }, null)*@
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>
+</html>

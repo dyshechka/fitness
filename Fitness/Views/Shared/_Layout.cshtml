@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @Styles.Render("~/Content/bootstrap.css")
+    @Styles.Render("~/Content/css/font-awesome.min.css")
+    @Styles.Render("~/Content/styles.css")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+</head>
+<body>
+@*     <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">@Html.ActionLink("ваша эмблема здесь", "Index", "Home")</p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
+                        <li>@Html.ActionLink("О программе", "About", "Home")</li>
+                        <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header> *@
+    <div class="main">
+        <div class="header">
+             @Html.Partial("_LoginPartial")
+            <h2>@ViewBag.Title</h2>
+        </div>
+        @*@RenderSection("featured", required: false)*@
+        @RenderBody()
+    </div>
+
+    <div class="container">&copy; @DateTime.Now.Year — приложение ASP.NET MVC</div>
+
+
+
+</body>
+</html>

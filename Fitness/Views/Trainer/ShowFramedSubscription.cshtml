@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Fitness.Models.subscription>
+
+@{
+    ViewBag.Title = "ShowFramedSubscription";
+}
+
+<h2>ShowFramedSubscription</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOfPurchase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idTraining)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    
+        @Html.HiddenFor(modelItem => item.idSubscription)
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfPurchase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idTraining)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.ActionLink("Support Subscription", "SupportSubscription", new { id = item.idSubscription }) |
+            @Html.ActionLink("Discard Subscription", "Delete", "Client", new { id = item.idSubscription }, null)
+            </td>
+        </tr>
+    }
+
+</table>

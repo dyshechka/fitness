@@ -1,0 +1,71 @@
+﻿@model Fitness.Models.group
+
+@{
+    ViewBag.Title = "Details Group";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Details Group</title>
+</head>
+<body>
+    <fieldset>
+        <legend>group</legend>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.nameGroup)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.nameGroup)
+        </div>
+        <table class="table table-striped table-hover" style="margin-top: 20px;">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.UserProfiles.First().fullName)</th>
+                <th>Изменить группу</th>
+                <th>Заморозить</th>
+                <th>Отметить посещение</th>
+                @{
+                    DateTime date = DateTime.Today.Subtract(new TimeSpan(4, 0, 0, 0));   
+                }
+                @for (int i = 0; i < 5; i++)
+                {
+                    <th>@(date.Day + "." + date.Month + "." + date.Year)</th>
+                    date = date.AddDays(1);
+                }
+            </tr>
+            @foreach (var user in Model.UserProfiles)
+            {
+                date = DateTime.Today.Subtract(new TimeSpan(4, 0, 0, 0));
+                <tr>
+                    <td>@user.fullName</td>
+                    <td>@Html.ActionLink("Изменить группу", "ChangeGroupToClient", new { id = user.UserId })</td>
+                    <td>@Html.ActionLink("Заморозить", "FreezeClient", new { id = user.UserId })</td>
+                    <td>@Html.ActionLink("Отметить посещение", "MarkVisit", new { id = user.UserId, idGroup = Model.idGroup })</td>
+
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <td>
+                            @if (user.monitoringvisits.Where(visit => visit.dateOfVisit.Equals(date)).ToList().Count > 0)
+                            {
+                                <p>+</p>
+                            }
+                            else
+                            {
+                                <p>-</p>   
+                            }
+                        </td>
+                        date = date.AddDays(1);
+                    }
+                </tr>
+            }
+        </table>
+
+    </fieldset>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.idGroup }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

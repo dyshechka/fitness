@@ -1,0 +1,32 @@
+﻿@model Fitness.Models.subscription
+
+@{
+    ViewBag.Title = "PaySubscription";
+    int totalPrice = Model.duration * Model.trainingprogram.price;
+}
+
+<h2>PaySubscription</h2>
+<p>Total price: @totalPrice</p>
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="id" value="@Model.idSubscription" />
+    
+    if (ViewBag.trainers != null)
+    {
+        <select name="idTrainer">
+            @foreach (int key in ViewBag.trainers.Keys)
+            {
+                <option value="@key">@ViewBag.trainers[key]</option>
+            }
+        </select>
+    }
+    
+    <p>
+        <input type="submit" value="Pay" />
+    </p>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = Model.UserProfiles.First().UserId })
+</div>
+

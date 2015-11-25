@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Fitness.Models.UserProfile>
+
+@{
+    ViewBag.Title = "ListFrozenClient";
+}
+
+<h2>List Frozen Client</h2>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.frozen)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.fullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telephone)
+        </td>
+        <td>
+        <td>
+            @Html.DisplayFor(modelItem => item.frozen)
+        </td>
+        <td>
+            @Html.ActionLink("Change Group", "ChangeGroupToClient", new { id=item.UserId }) 
+        </td>
+    </tr>
+}
+
+</table>

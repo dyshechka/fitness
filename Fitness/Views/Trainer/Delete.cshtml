@@ -1,0 +1,33 @@
+﻿@model Fitness.Models.group
+
+@{
+    ViewBag.Title = "Delete group";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Delete Group</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>group</legend>
+        
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.nameGroup)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.nameGroup)
+        </div>
+    </fieldset>
+
+    @using (Html.BeginForm()) {
+        <p>
+            <input type="submit" value="Delete" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    }
+
+</body>
+</html>
