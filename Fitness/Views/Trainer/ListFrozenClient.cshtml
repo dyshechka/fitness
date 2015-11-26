@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<Fitness.Models.UserProfile>
 
 @{
-    ViewBag.Title = "ListFrozenClient";
+    ViewBag.Title = "Список замороженных клиентов";
 }
 
-<h2>List Frozen Client</h2>
-<table>
+<table class="table table-striped table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.fullName)
@@ -22,31 +21,40 @@
         <th>
             @Html.DisplayNameFor(model => model.frozen)
         </th>
+        <th>Действия
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+    @foreach (var item in Model)
+    {
+        <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.fullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telephone)
-        </td>
-        <td>
-        <td>
-            @Html.DisplayFor(modelItem => item.frozen)
-        </td>
-        <td>
-            @Html.ActionLink("Change Group", "ChangeGroupToClient", new { id=item.UserId }) 
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.fullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telephone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.frozen)
+            </td>
+            <td class="actions">
+                @*@Html.ActionLink("Change Group", "ChangeGroupToClient", new { id=item.UserId }) *@
+                <a href="@Url.Action("ChangeGroupToClient", "Trainer", new { id = item.UserId })" title="Изменить группу клиенту"><i class="fa fa-pencil-square"></i></a>
+            </td>
+        </tr>
+    }
 
 </table>
+
+<hr />
+<div>
+    @*@Html.ActionLink("Вернуться назад", "Index")*@
+    <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
+</div>

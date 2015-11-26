@@ -9,20 +9,21 @@ and open the template in the editor.
 */
 @font-face {
     font-family: 'Baron';
-    src: url('fonts/baronneue.woff') format('woff'),
-        url('fonts/baronneue.woff2') format('woff2'),
-        url('fonts/baronneue.ttf') format('ttf');
+    src: url('fonts/baronneue.woff') format('woff'), url('fonts/baronneue.woff2') format('woff2'), url('fonts/baronneue.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
 }
+
 body {
     font-family: Tahoma;
     background-color: #c3c3c3;
 }
+
 .main {
     width: 900px;
     margin: 40px auto 0;
@@ -33,6 +34,7 @@ body {
     -webkit-box-shadow: 0 0 5px 6px rgba(0,0,0,0.2);
     box-shadow: 0 0 5px 6px rgba(0,0,0,0.2);
 }
+
 .header {
     width: 900px;
     height: 200px;
@@ -42,45 +44,52 @@ body {
     padding: 20px;
     box-sizing: border-box;
     vertical-align: bottom;
+}
 
-}
-.header h1,
-.header h2,
-.header h3{
-    font-family: 'Baron', Arial;
-    margin-top: 95px;
-    color: #fff;
-    font-size: 23px;
-    text-shadow: 1px 1px 17px rgba(0, 0, 0, 1);
-}
+    .header h1,
+    .header h2,
+    .header h3 {
+        font-family: 'Baron', Arial;
+        margin-top: 95px;
+        color: #fff;
+        font-size: 23px;
+        text-shadow: 1px 1px 17px rgba(0, 0, 0, 1);
+    }
+
 h1,
 h2,
 h3 {
     font-family: Arial;
-
 }
-h1{
+
+h1 {
     font-size: 20px;
 }
+
 h2 {
     font-size: 17px;
 }
+
 h3 {
     font-size: 15px;
 }
+
 body table tr td {
     text-align: center !important;
 }
+
 .actions a {
     font-size: 16px;
     line-height: 11px;
     padding-bottom: 6px;
 }
+
 .actions {
     width: 65px;
 }
+
 .right-text {
-    text-align: right; 
+    text-align: right;
 }
 
 .container {
@@ -88,24 +97,41 @@ body table tr td {
     margin: 20px auto 0;
     text-align: center;
 }
+
 body .table th, body .table td {
     padding: 5px;
 }
+
 .txt-red {
     color: #da4f49;
+    font-weight: 600;
 }
+
 .txt-green {
     color: #51a351;
 }
+
 .txt-black {
     color: #222222;
 }
+
 .txt-blue {
     color: #2f96b4;
 }
+
 .txt-primary {
     color: #0044cc;
 }
+
 .txt-yellow {
     color: #f89406;
+}
+
+.colorLink {
+    color: #F3F3F3;
+}
+
+a:hover {
+    color: #5bb75b;
+    text-decoration: underline;
 }

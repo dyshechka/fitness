@@ -11,6 +11,7 @@ namespace Fitness.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class subscription
     {
@@ -20,9 +21,19 @@ namespace Fitness.Models
         }
     
         public int idSubscription { get; set; }
+
+        [Required]
+        [Display(Name = "Срок действия абонемента")]
         public int duration { get; set; }
+
+        [Required]
+        [Display(Name = "Дата приобретения")]
         public System.DateTime dateOfPurchase { get; set; }
+
         public int idTraining { get; set; }
+
+        [Required]
+        [Display(Name = "Статус абонемента")]
         public string status { get; set; }
     
         public virtual ICollection<UserProfile> UserProfiles { get; set; }

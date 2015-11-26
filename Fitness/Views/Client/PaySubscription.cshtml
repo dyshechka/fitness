@@ -1,7 +1,7 @@
 ﻿@model Fitness.Models.subscription
 
 @{
-    ViewBag.Title = "PaySubscription";
+    ViewBag.Title = "Оплатить абонемент";
     int totalPrice = Model.duration * Model.trainingprogram.price;
 }
 
@@ -13,20 +13,22 @@
     
     if (ViewBag.trainers != null)
     {
-        <select name="idTrainer">
-            @foreach (int key in ViewBag.trainers.Keys)
-            {
-                <option value="@key">@ViewBag.trainers[key]</option>
-            }
-        </select>
+    <select name="idTrainer">
+        @foreach (int key in ViewBag.trainers.Keys)
+        {
+            <option value="@key">@ViewBag.trainers[key]</option>
+        }
+    </select>
     }
     
     <p>
-        <input type="submit" value="Pay" />
+        <input type="submit" value="Оплатить" class="btn btn-success" />
     </p>
 }
 
+<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index", new { id = Model.UserProfiles.First().UserId })
+    @Html.ActionLink("Вернуться назад", "Index", new { id = Model.UserProfiles.First().UserId })
+    <a href="@Url.Action("Index", "Client", new { id = Model.UserProfiles.First().UserId })" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
 </div>
 

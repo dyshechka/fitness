@@ -1,14 +1,14 @@
 ﻿@model Fitness.Models.group
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Изменить название группы";
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Edit Group</title>
+    <title>Изменить название группы</title>
 </head>
 <body>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
@@ -20,11 +20,9 @@
         @Html.ValidationSummary(true)
     
         <fieldset>
-            <legend>group</legend>
-
             @Html.HiddenFor(model => model.idGroup)
             @Html.HiddenFor(model => model.idTraining)
-           
+
             <div class="editor-label">
                 @Html.LabelFor(model => model.nameGroup)
             </div>
@@ -34,13 +32,15 @@
             </div>
 
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Сохранить" class="btn btn-success" />
             </p>
         </fieldset>
     }
 
+    <hr />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
     </div>
 </body>
 </html>

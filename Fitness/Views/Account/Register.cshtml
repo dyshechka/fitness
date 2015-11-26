@@ -3,12 +3,8 @@
     ViewBag.Title = "Регистрация";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Создание новой учетной записи.</h2>
-</hgroup>
-
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
@@ -33,7 +29,7 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.dateOfBirth)
-                @Html.TextBoxFor(m => m.dateOfBirth, new { type = "date"})
+                @Html.TextBoxFor(m => m.dateOfBirth, new { type = "date" })
             </li>
             <li>
                 @Html.LabelFor(m => m.email)
@@ -44,9 +40,15 @@
                 @Html.TextBoxFor(m => m.telephone)
             </li>
         </ol>
-        <input type="submit" value="Регистрация" />
+        <input type="submit" value="Регистрация" class="btn btn-success" />
     </fieldset>
 }
+
+<hr />
+<div>
+    @*@Html.ActionLink("Вернуться назад", "Index")*@
+    <a href="@Url.Action("Login", "Account")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

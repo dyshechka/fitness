@@ -2,6 +2,7 @@ Fitness.sln
 Fitness.v*.suo 
 /packages/ 
 /TestResults/ 
+/Fitness/App_Data/
 /Fitness/Content/themes/ 
 /Fitness/bin/ 
 /Fitness/Images/ 

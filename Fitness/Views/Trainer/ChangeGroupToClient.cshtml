@@ -1,10 +1,9 @@
 ﻿@model Fitness.Models.UserProfile
 
 @{
-    ViewBag.Title = "ChangeGroupToClient";
+    ViewBag.Title = "Изменить группу клиенту";
 }
 
-<h2>ChangeGroupToClient</h2>
 @using (Html.BeginForm())
 {    
     <input type="hidden" name="idClient" value="@Model.UserId" />
@@ -17,10 +16,12 @@
     </select>
 
     <p>
-        <input type="submit" value="Save" />
+        <input type="submit" value="Сохранить" class="btn btn-success" />
     </p>        
 }
 
+<hr />
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @*@Html.ActionLink("Вернуться назад", "Index")*@
+    <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
 </div>

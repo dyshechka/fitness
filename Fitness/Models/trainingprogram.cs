@@ -11,6 +11,7 @@ namespace Fitness.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class trainingprogram
     {
@@ -21,8 +22,17 @@ namespace Fitness.Models
         }
     
         public int idTraining { get; set; }
+
+        [Required]
+        [Display(Name = "Цена")]
         public int price { get; set; }
+
+        [Required]
+        [Display(Name = "Тип тренировки")]
         public string typeTraining { get; set; }
+
+        [Required]
+        [Display(Name = "Вид тренировки")]
         public string kindTraining { get; set; }
     
         public virtual ICollection<group> groups { get; set; }

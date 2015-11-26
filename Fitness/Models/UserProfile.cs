@@ -11,6 +11,7 @@ namespace Fitness.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class UserProfile
     {
@@ -20,13 +21,30 @@ namespace Fitness.Models
         }
     
         public int UserId { get; set; }
+
+        [Required]
+        [Display(Name = "Логин")]
         public string UserName { get; set; }
+
+        [Required]
+        [Display(Name = "ФИО пользователя")]
         public string fullName { get; set; }
+
+        [Required]
+        [Display(Name = "Дата рождения")]
         public System.DateTime dateOfBirth { get; set; }
         public string email { get; set; }
+
+        [Required]
+        [Display(Name = "Телефон")]
         public int telephone { get; set; }
+
+        [Required]
+        [Display(Name = "Заморожен?")]
         public bool frozen { get; set; }
+
         public Nullable<int> idGroup { get; set; }
+
         public Nullable<int> idSubscription { get; set; }
     
         public virtual group group { get; set; }

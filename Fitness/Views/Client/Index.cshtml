@@ -1,41 +1,42 @@
 ﻿@model Fitness.Models.subscription
 
 @{
-    ViewBag.Title = "Пользователи";
+    ViewBag.Title = "Главная страница (Клиент)";
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <title>Index Client</title>
+    <title>Главная страница (Клиент)</title>
 </head>
 <body>
-    <div>
-        Hello dear client!
-    </div>
     @if (Model == null)
     {
         <div>
-            @Html.ActionLink("Create New Subscription", "Create", new { id = ViewBag.user.UserId })
+            @*@Html.ActionLink("Create New Subscription", "Create", new { id = ViewBag.user.UserId })*@
+            <a href="@Url.Action("Create", "Client", new { id = ViewBag.user.UserId })" title="Создать новый абонемент"><i class="fa fa-plus-square"></i> Создать новый абонемент</a>
         </div>
     }
 
     @if (Model != null)
     {
         <div>
-            @Html.ActionLink("Delete Subscription", "Delete", new { id = Model.idSubscription })
+            @*@Html.ActionLink("Удалить абонемент", "Delete", new { id = Model.idSubscription })*@
+            <a href="@Url.Action("Delete", "Client", new { id = Model.idSubscription })" title="Удалить абонемент"><i class="fa fa-minus-square"></i> Удалить абонемент</a>
         </div>
         
         if (Model.status.Equals("Подтвержден"))
         {
         <div>
-            @Html.ActionLink("Pay Subscription", "PaySubscription", new { id = Model.idSubscription })
+            @*@Html.ActionLink("Оплатить абонемент", "PaySubscription", new { id = Model.idSubscription })*@
+            <a href="@Url.Action("PaySubscription", "Client", new { id = Model.idSubscription })" title="Оплатить абонемент"><i class="fa fa-calculator"></i> Оплатить абонемент</a>
         </div>
         }
     
         <div>
-            @Html.ActionLink("View status of the subscription", "ViewStatusSubscription", new { id = Model.idSubscription })
+            @*@Html.ActionLink("Посмотреть статус абонемента", "ViewStatusSubscription", new { id = Model.idSubscription })*@
+            <a href="@Url.Action("ViewStatusSubscription", "Client", new { id = Model.idSubscription })" title="Посмотреть статус абонемента"><i class="fa fa-check-square"></i> Посмотреть статус абонемента</a>
         </div>
     }
     else
@@ -46,7 +47,8 @@
     }
 
     <div>
-        @Html.ActionLink("Change data about itself", "Edit")
+        @*@Html.ActionLink("Изменить данные о себе", "Edit")*@
+        <a href="@Url.Action("Edit", "Client")" title="Изменить данные о себе"><i class="fa fa-pencil-square"></i> Изменить данные о себе</a>
     </div>
 
 

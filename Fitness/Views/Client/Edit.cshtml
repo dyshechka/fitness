@@ -1,7 +1,7 @@
 ﻿@model Fitness.Models.UserProfile
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Изменить данные о себе";
 }
 
 <!DOCTYPE html>
@@ -9,8 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
-    <title>Edit</title>
+    <title>Изменить данные о себе</title>
 </head>
 <body>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
@@ -21,8 +20,6 @@
         @Html.ValidationSummary(true)
     
         <fieldset>
-            <legend>user</legend>    
-
             @Html.HiddenFor(model => model.UserId)
             @Html.HiddenFor(model => model.idGroup)
             @Html.HiddenFor(model => model.idSubscription)
@@ -54,13 +51,14 @@
             </div>  
                
             <p>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Сохранить" class="btn btn-success"/>
             </p>
         </fieldset>
     }
-    
+    <hr />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Client")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
     </div>
 </body>
 </html>

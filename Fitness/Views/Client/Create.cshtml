@@ -1,7 +1,7 @@
 ﻿@model Fitness.Models.subscription
 
 @{
-    ViewBag.Title = "";
+    ViewBag.Title = "Создать абонемент";
 }
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link type="text/css" rel="stylesheet" href="../../Content/Site.css" />
-    <title>Create Subscription</title>
+    <title>Создать абонемент</title>
 </head>
 <body>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
@@ -20,12 +20,10 @@
     @using (Html.BeginForm()) {
         @Html.ValidationSummary(true)
     
-        <fieldset>
-            <legend>subscription</legend>
-   
+        <fieldset>  
             <input type="hidden" name="id" value="@ViewBag.id" />
             <div class="editor-label">
-                <p>Select type and kind training</p>
+                <p>Выберите тип и вид тренировки</p>
             </div>
             <div class="editor-field">
                 <select name="kind">
@@ -49,13 +47,14 @@
             </div>
 
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="Создать" class="btn btn-success"/>
             </p>
         </fieldset>
     }
-    
+    <hr />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Client")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
     </div>
 </body>
 </html>

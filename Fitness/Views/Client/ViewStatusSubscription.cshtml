@@ -1,14 +1,16 @@
 ﻿@model Fitness.Models.subscription
 
 @{
-    ViewBag.Title = "ViewStatusSubscription";
+    ViewBag.Title = "Посмотреть статус абонемента";
 }
 
-<h2>ViewStatusSubscription</h2>
+<h2>Посмотреть статус абонемента</h2>
 <div>
     <p>@Model.status</p>
 </div>
 
+<hr />
 <div>
-    @Html.ActionLink("Back To Main Index", "Index")
+    @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Client")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
 </div>

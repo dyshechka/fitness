@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <title>Edit</title>
+    <title>Изменить роль пользователю</title>
 </head>
 <body>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
@@ -19,12 +19,10 @@
         @Html.ValidationSummary(true)
     
         <fieldset>
-            <legend>user</legend>
-
              @Html.HiddenFor(model => model.UserId)
                
             <div class="editor-label">
-                <p>Select Role For User</p>
+                <p>Выберите роль для пользователя</p>
             </div>
             <div class="editor-field">
                 <select name="role">
@@ -36,13 +34,14 @@
             </div>  
              
             <p>
-                <input type="submit" value="Save" class="btn btn-success"/>
+                <input type="submit" value="Сохранить" class="btn btn-success"/>
             </p>
         </fieldset>
     }
-    
+    <hr />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Admin")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
     </div>
 </body>
 </html>

@@ -12,20 +12,13 @@
 </head>
 <body>
     <fieldset>
-        <legend>group</legend>
-
-        <div class="display-label">
-            @Html.DisplayNameFor(model => model.nameGroup)
-        </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.nameGroup)
         </div>
         <table class="table table-striped table-hover" style="margin-top: 20px;">
             <tr>
                 <th>@Html.DisplayNameFor(model => model.UserProfiles.First().fullName)</th>
-                <th>Изменить группу</th>
-                <th>Заморозить</th>
-                <th>Отметить посещение</th>
+                <th>Действия</th>
                 @{
                     DateTime date = DateTime.Today.Subtract(new TimeSpan(4, 0, 0, 0));   
                 }
@@ -40,9 +33,16 @@
                 date = DateTime.Today.Subtract(new TimeSpan(4, 0, 0, 0));
                 <tr>
                     <td>@user.fullName</td>
-                    <td>@Html.ActionLink("Изменить группу", "ChangeGroupToClient", new { id = user.UserId })</td>
-                    <td>@Html.ActionLink("Заморозить", "FreezeClient", new { id = user.UserId })</td>
-                    <td>@Html.ActionLink("Отметить посещение", "MarkVisit", new { id = user.UserId, idGroup = Model.idGroup })</td>
+                    <td class="actions">
+                        @*@Html.ActionLink("Изменить группу", "ChangeGroupToClient", new { id = user.UserId })*@
+                        <a href="@Url.Action("ChangeGroupToClient", "Trainer", new { id = user.UserId })" title="Изменить группу клиенту"><i class="fa fa-pencil-square"></i></a>
+
+                        @*@Html.ActionLink("Заморозить", "FreezeClient", new { id = user.UserId })*@
+                        <a href="@Url.Action("FreezeClient", "Trainer", new { id = user.UserId })" title="Заморозить клиента"><i class="fa fa-thumbs-o-down"></i></a>
+
+                        @*@Html.ActionLink("Отметить посещение", "MarkVisit", new { id = user.UserId, idGroup = Model.idGroup })*@
+                        <a href="@Url.Action("MarkVisit", "Trainer", new { id = user.UserId, idGroup = Model.idGroup })" title="Отметить посещение"><i class="fa fa-check-square"></i></a>
+                    </td>
 
                     @for (int i = 0; i < 5; i++)
                     {
@@ -56,16 +56,18 @@
                                 <p>-</p>   
                             }
                         </td>
-                        date = date.AddDays(1);
+                            date = date.AddDays(1);
                     }
                 </tr>
             }
         </table>
 
     </fieldset>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.idGroup }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+    <hr />
+    <div>
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
+    </div>
 </body>
 </html>

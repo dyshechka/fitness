@@ -11,11 +11,16 @@ namespace Fitness.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class monitoringvisit
     {
         public int idVisit { get; set; }
+
+        [Required]
+        [Display(Name = "Дата посещения")]
         public System.DateTime dateOfVisit { get; set; }
+
         public int idUser { get; set; }
     
         public virtual UserProfile UserProfile { get; set; }

@@ -1,7 +1,7 @@
 ﻿@model Fitness.Models.group
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Создать новую группу";
 }
 
 
@@ -9,19 +9,18 @@
 
 <html>
 <head>
-    <title>Create Group</title>
+    <title>Создать новую группу</title>
 </head>
 <body>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    
-    @using (Html.BeginForm()) {
+
+    @using (Html.BeginForm())
+    {
         @Html.ValidationSummary(true)
     
         <fieldset>
-            <legend>group</legend>
-   
             <div class="editor-label">
                 @Html.LabelFor(model => model.nameGroup)
             </div>
@@ -31,7 +30,7 @@
             </div>
 
             <div class="editor-label">
-                <p>Select type and kind training</p>
+                <p>Выберите тип и вид тренировки</p>
             </div>
             <div class="editor-field">
                 <select name="idTraining" id="idTraining">
@@ -41,15 +40,17 @@
                     }
                 </select>
             </div>
-    
+
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="Создать" class="btn btn-success" />
             </p>
         </fieldset>
     }
-    
+
+    <hr />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
     </div>
 </body>
 </html>

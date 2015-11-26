@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <title>Create User</title>
+    <title>Создать нового пользователя</title>
 </head>
 <body>
     <script src="~/Scripts/jquery-1.7.1.min.js"></script>
@@ -18,9 +18,7 @@
     @using (Html.BeginForm()) {
         @Html.ValidationSummary(true)
     
-        <fieldset>
-            <legend>user</legend>
-    
+        <fieldset>   
             <div class="editor-label">
                 @Html.LabelFor(model => model.fullName)
             </div>
@@ -31,7 +29,6 @@
     
             <div class="editor-label">
                 @Html.LabelFor(model => model.dateOfBirth)
-                (yyyy-MM-dd)
             </div>
             <div class="editor-field">
                 @Html.EditorFor(model => model.dateOfBirth)
@@ -73,13 +70,15 @@
 
     
             <p>
-                <input type="submit" value="Create" class="btn btn-success"/>
+                <input type="submit" value="Создать" class="btn btn-success"/>
             </p>
         </fieldset>
     }
-    
+
+    <hr />
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @*@Html.ActionLink("Вернуться назад", "Index")*@
+        <a href="@Url.Action("Index", "Admin")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
     </div>
 </body>
 </html>

@@ -1,12 +1,10 @@
 ﻿@model IEnumerable<Fitness.Models.subscription>
 
 @{
-    ViewBag.Title = "ShowFramedSubscription";
+    ViewBag.Title = "Список оформленных абонементов";
 }
 
-<h2>ShowFramedSubscription</h2>
-
-<table>
+<table class="table table-striped table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.duration)
@@ -20,7 +18,7 @@
         <th>
             @Html.DisplayNameFor(model => model.status)
         </th>
-        <th></th>
+        <th>Действия</th>
     </tr>
 
     @foreach (var item in Model)
@@ -41,11 +39,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.status)
             </td>
-            <td>
-                @Html.ActionLink("Support Subscription", "SupportSubscription", new { id = item.idSubscription }) |
-            @Html.ActionLink("Discard Subscription", "Delete", "Client", new { id = item.idSubscription }, null)
+            <td class="actions">
+                @*@Html.ActionLink("Support Subscription", "SupportSubscription", new { id = item.idSubscription }) |*@
+                <a href="@Url.Action("SupportSubscription", "Trainer", new { id = item.idSubscription })" title="Подтвердить абонемент"><i class="fa fa-plus-square"></i></a>
+
+                @*@Html.ActionLink("Discard Subscription", "Delete", "Client", new { id = item.idSubscription }, null)*@
+                <a href="@Url.Action("Delete", "Client", new { id = item.idSubscription }, null)" title="Отклонить абонемент"><i class="fa fa-minus-square"></i></a>
             </td>
         </tr>
     }
 
+
+
 </table>
+
+<hr />
+<div>
+    @*@Html.ActionLink("Вернуться назад", "Index")*@
+    <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
+</div>

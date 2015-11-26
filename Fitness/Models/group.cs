@@ -11,6 +11,7 @@ namespace Fitness.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class group
     {
@@ -20,7 +21,11 @@ namespace Fitness.Models
         }
     
         public int idGroup { get; set; }
+
+        [Required]
+        [Display(Name = "Название группы")]
         public string nameGroup { get; set; }
+
         public int idTraining { get; set; }
     
         public virtual trainingprogram trainingprogram { get; set; }
