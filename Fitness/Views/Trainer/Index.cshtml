@@ -13,7 +13,6 @@
 </head>
 <body>
     <p>
-        @*@Html.ActionLink("Create New Group", "Create")*@
         <a href="@Url.Action("Create", "Trainer")" title="Создать новую группу"><i class="fa fa-plus-square"></i> Создать новую группу</a>
     </p>
     <table  class="table table-striped table-hover">
@@ -31,13 +30,10 @@
                     @Html.DisplayFor(modelItem => item.nameGroup)
                 </td>
                 <td class="actions">
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.idGroup }) |*@
                     <a href="@Url.Action("Edit", "Trainer", new { id = item.idGroup })" title="Изменить название группы"><i class="fa fa-pencil-square"></i></a>
 
-                    @*@Html.ActionLink("Details", "Details", new { id = item.idGroup }) |*@
                     <a href="@Url.Action("Details", "Trainer", new { id = item.idGroup })" title="Посмотреть подробнее"><i class="fa fa-bars"></i></a>
 
-                    @*@Html.ActionLink("Delete", "Delete", new { id = item.idGroup })*@
                     <a href="@Url.Action("Delete", "Trainer", new { id = item.idGroup })" title="Удалить группу"><i class="fa fa-trash-o"></i></a>
                 </td>
             </tr>
@@ -46,14 +42,12 @@
 
     <div>
         <p>
-           @* @Html.ActionLink("List Frozen Client", "ListFrozenClient")*@
             <a href="@Url.Action("ListFrozenClient", "Trainer")" title="Список замороженных клиентов"><i class="fa fa-minus-square"></i> Список замороженных клиентов</a>
         </p>
     </div>
 
     <div>
         <p>
-            @*@Html.ActionLink("Show Framed Subscription", "ShowFramedSubscription")*@
             <a href="@Url.Action("ShowFramedSubscription", "Trainer")" title="Список оформленных абонементов"><i class="fa fa-list-alt"></i> Список оформленных абонементов</a>
         </p>
     </div>

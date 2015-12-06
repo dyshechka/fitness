@@ -16,17 +16,29 @@ namespace Fitness.Controllers
     [Authorize]
     public class AdminController : Controller
     {
-        //создаем контекст данных
+        private IFitnessRepository repository;
+        
+        //Для тестов откомментировать строку ниже
+        //private FitnessEntities db;
+        
+        //Создаем контекст данных (для описания тестов строку ниже закомментировать)
         private FitnessEntities db = new FitnessEntities();
+
+        public AdminController() : this(new FitnessRepository()) { }
+
+        public AdminController(IFitnessRepository repository)
+        {
+            this.repository = repository;
+        }
 
         public ActionResult Index()
         {
-            return View(db.UserProfiles.ToList());
+            return View("Index", repository.GetAllUserProfiles());
         }
 
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         [HttpPost]

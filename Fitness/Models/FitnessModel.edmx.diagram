@@ -6,11 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="df3c2f16f95644da966bab81e9048423" Name="Диаграмма1">
         <EntityTypeShape EntityType="FitnessModel.group" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FitnessModel.monitoringvisit" Width="1.5" PointX="9" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="FitnessModel.subscription" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessModel.monitoringvisit" Width="1.5" PointX="7.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessModel.subscription" Width="1.5" PointX="2.5" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FitnessModel.trainingprogram" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="FitnessModel.FK_trainingprogram_group" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="FitnessModel.UserProfile" Width="1.5" PointX="6.25" PointY="2" />
+        <EntityTypeShape EntityType="FitnessModel.UserProfile" Width="1.5" PointX="5.125" PointY="2" />
         <AssociationConnector Association="FitnessModel.FK_UserProfile_group" />
         <AssociationConnector Association="FitnessModel.FK_UserProfile_subscription" />
         <AssociationConnector Association="FitnessModel.FK_monitoringvisit_UserProfile" />

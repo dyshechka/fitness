@@ -45,7 +45,6 @@
                 @Html.DisplayFor(modelItem => item.frozen)
             </td>
             <td class="actions">
-                @*@Html.ActionLink("Change Group", "ChangeGroupToClient", new { id=item.UserId }) *@
                 <a href="@Url.Action("ChangeGroupToClient", "Trainer", new { id = item.UserId })" title="Изменить группу клиенту"><i class="fa fa-pencil-square"></i></a>
             </td>
         </tr>
@@ -55,6 +54,5 @@
 
 <hr />
 <div>
-    @*@Html.ActionLink("Вернуться назад", "Index")*@
     <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
 </div>

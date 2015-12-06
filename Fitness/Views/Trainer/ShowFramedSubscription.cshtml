@@ -40,10 +40,8 @@
                 @Html.DisplayFor(modelItem => item.status)
             </td>
             <td class="actions">
-                @*@Html.ActionLink("Support Subscription", "SupportSubscription", new { id = item.idSubscription }) |*@
                 <a href="@Url.Action("SupportSubscription", "Trainer", new { id = item.idSubscription })" title="Подтвердить абонемент"><i class="fa fa-plus-square"></i></a>
 
-                @*@Html.ActionLink("Discard Subscription", "Delete", "Client", new { id = item.idSubscription }, null)*@
                 <a href="@Url.Action("Delete", "Client", new { id = item.idSubscription }, null)" title="Отклонить абонемент"><i class="fa fa-minus-square"></i></a>
             </td>
         </tr>
@@ -55,6 +53,5 @@
 
 <hr />
 <div>
-    @*@Html.ActionLink("Вернуться назад", "Index")*@
     <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
 </div>

@@ -19,7 +19,9 @@ namespace Fitness.Models
         {
             this.UserProfiles = new HashSet<UserProfile>();
         }
-    
+
+        [Required]
+        [Display(Name = "Номер абонемента")]
         public int idSubscription { get; set; }
 
         [Required]

@@ -34,13 +34,10 @@
                 <tr>
                     <td>@user.fullName</td>
                     <td class="actions">
-                        @*@Html.ActionLink("Изменить группу", "ChangeGroupToClient", new { id = user.UserId })*@
                         <a href="@Url.Action("ChangeGroupToClient", "Trainer", new { id = user.UserId })" title="Изменить группу клиенту"><i class="fa fa-pencil-square"></i></a>
 
-                        @*@Html.ActionLink("Заморозить", "FreezeClient", new { id = user.UserId })*@
                         <a href="@Url.Action("FreezeClient", "Trainer", new { id = user.UserId })" title="Заморозить клиента"><i class="fa fa-thumbs-o-down"></i></a>
 
-                        @*@Html.ActionLink("Отметить посещение", "MarkVisit", new { id = user.UserId, idGroup = Model.idGroup })*@
                         <a href="@Url.Action("MarkVisit", "Trainer", new { id = user.UserId, idGroup = Model.idGroup })" title="Отметить посещение"><i class="fa fa-check-square"></i></a>
                     </td>
 
@@ -66,7 +63,6 @@
 
     <hr />
     <div>
-        @*@Html.ActionLink("Вернуться назад", "Index")*@
         <a href="@Url.Action("Index", "Trainer")" title="Вернуться назад"><i class="fa fa-arrow-left"></i> Вернуться назад</a>
     </div>
 </body>

@@ -28,7 +28,7 @@
 
 <hr />
 <div>
-    @Html.ActionLink("Вернуться назад", "Index", new { id = Model.UserProfiles.First().UserId })
+    @*@Html.ActionLink("Вернуться назад", "Index", new { id = Model.UserProfiles.First().UserId })*@
     <a href="@Url.Action("Index", "Client", new { id = Model.UserProfiles.First().UserId })" title="Вернуться назад"><i class="fa fa-arrow-left"></i>Вернуться назад</a>
 </div>
 
